@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Golf Map</title>
+    <style>
+        html, body {
+            height: 90%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 90%;
+        }
+    </style>
+</head>
+<body onload="onload()">
+<div id="map"></div>
+<script>
+
+    //48093352-a077-4c61-b2d3-ca2aae13bc86
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABfGnqB1oEXaShbzH4gqhntOoNWVxmN8U&signed_in=true&callback=initMap"></script>
+
+<table border="1" style="width:50%">
+    <th style="align-center">Front Nine</th>
+    <th>Par</th>
+    <th>Yardage</th>
+    <th>Strokes</th>
+    <th>Hole Score</th>
+    <th>Running Total</th>
+    <tr>
+        <td style="width 25%" onclick="HoleOne()">Hole 1</td>
+        <td id="Par1">Par</td>
+        <td id="Yards1"></td>
+        <td><input id="strokes1" type="text" name="Strokes" value="" onblur="Score(1); runningScore1()"></td>
+        <td id="hs1"></td>
+        <td id="rs1"></td>
+    </tr>
+
+    <tr>
+        <td onclick="HoleTwo()">Hole 2</td>
+        <td id="Par2">Par</td>
+        <td id="Yards2"></td>
+        <td ><input id="strokes2" type="text" name="Strokes" value="" onblur="Score(2); runningScore2(2)" ></td>
+        <td  id="hs2"></td>
+        <td id="rs2"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleThree()">Hole 3</td>
+        <td id="Par3">Par</td>
+        <td id="Yards3"></td>
+        <td ><input id="strokes3" type="text" name="Strokes" value="" onblur="Score(3); runningScore2(3)" ></td>
+        <td id="hs3"></td>
+        <td id="rs3"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleFour()">Hole 4</td>
+        <td id="Par4">Par</td>
+        <td id="Yards4"></td>
+        <td><input id="strokes4" type="text" name="Strokes" value="" onblur="Score(4); runningScore2(4)" ></td>
+        <td id="hs4"></td>
+        <td id="rs4"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleFive()">Hole 5</td>
+        <td id="Par5">Par</td>
+        <td id="Yards5"></td>
+        <td><input id="strokes5" type="text" name="Strokes" value="" onblur="Score(5); runningScore2(5)" ></td>
+        <td id="hs5"></td>
+        <td id="rs5"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleSix()">Hole 6</td>
+        <td id="Par6">Par</td>
+        <td id="Yards6"></td>
+        <td><input id="strokes6" type="text" name="Strokes" value="" onblur="Score(6); runningScore2(6)" ></td>
+        <td id="hs6"></td>
+        <td id="rs6"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleSeven()">Hole 7</td>
+        <td id="Par7">Par</td>
+        <td id="Yards7"></td>
+        <td><input id="strokes7" type="text" name="Strokes" value="" onblur="Score(7); runningScore2(7)" ></td>
+        <td id="hs7"></td>
+        <td id="rs7"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleEight()">Hole 8</td>
+        <td id="Par8">Par</td>
+        <td id="Yards8"></td>
+        <td><input id="strokes8" type="text" name="Strokes" value="" onblur="Score(8); runningScore2(8)" ></td>
+        <td id="hs8"></td>
+        <td id="rs8"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleNine()">Hole 9</td>
+        <td id="Par9">Par</td>
+        <td id="Yards9"></td>
+        <td><input id="strokes9" type="text" name="Strokes" value="" onblur="Score(9); runningScore2(9)" ></td>
+        <td id="hs9"></td>
+        <td id="rs9"></td>
+    </tr>
+
+</table>
+<br>
+
+<table border="1" style="width:50%">
+    <th style="align-center">Back Nine</th>
+    <th>Par</th>
+    <th>Yardage</th>
+    <th>Strokes</th>
+    <th>Hole Score</th>
+    <th>Running Score</th>
+    <tr>
+        <td style="width 25%" onclick="HoleTen()">Hole 10</td>
+        <td id="Par10">Par</td>
+        <td id="Yards10"></td>
+        <td><input id="strokes10" type="text" name="Strokes" value="" onblur="Score(10); runningScore2(10)" ></td>
+        <td id="hs10"></td>
+        <td id="rs10"></td>
+    </tr>
+
+    <tr>
+        <td onclick="HoleEleven()">Hole 11</td>
+        <td id="Par11">Par</td>
+        <td id="Yards11"></td>
+        <td><input id="strokes11" type="text" name="Strokes" value="" onblur="Score(11); runningScore2(11)" ></td>
+        <td id="hs11"></td>
+        <td id="rs11"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleTwelve()">Hole 12</td>
+        <td id="Par12">Par</td>
+        <td id="Yards12"></td>
+        <td><input id="strokes12" type="text" name="Strokes" value="" onblur="Score(12); runningScore2(12)" ></td>
+        <td id="hs12"></td>
+        <td id="rs12"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleThirteen()">Hole 13</td>
+        <td id="Par13">Par</td>
+        <td id="Yards13"></td>
+        <td><input id="strokes13" type="text" name="Strokes" value="" onblur="Score(13); runningScore2(13)" ></td>
+        <td id="hs13"></td>
+        <td id="rs13"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleFourteen()">Hole 14</td>
+        <td id="Par14">Par</td>
+        <td id="Yards14"></td>
+        <td><input id="strokes14" type="text" name="Strokes" value="" onblur="Score(14); runningScore2(14)" ></td>
+        <td id="hs14"></td>
+        <td id="rs14"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleFifteen()">Hole 15</td>
+        <td id="Par15">Par</td>
+        <td id="Yards15"></td>
+        <td><input id="strokes15" type="text" name="Strokes" value="" onblur="Score(15); runningScore2(15)" ></td>
+        <td id="hs15"></td>
+        <td id="rs15"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleSixteen()">Hole 16</td>
+        <td id="Par16">Par</td>
+        <td id="Yards16"></td>
+        <td><input id="strokes16" type="text" name="Strokes" value="" onblur="Score(16); runningScore2(16)" ></td>
+        <td id="hs16"></td>
+        <td id="rs16"></td>
+    </tr>
+    <tr>
+        <td onclick="HoleSeventeen()">Hole 17</td>
+        <td id="Par17">Par</td>
+        <td id="Yards17"></td>
+        <td><input id="strokes17" type="text" name="Strokes" value="" onblur="Score(17); runningScore2(17)" ></td>
+        <td id="hs17"></td>
+        <td id="rs17"></td>
+    </tr>
+    <tr>
+        <td style="width 25%" onclick="HoleEighteen()">Hole 18</td>
+        <td id="Par18">Par</td>
+        <td id="Yards18"></td>
+        <td><input id="strokes18" type="text" name="Strokes" value="" onblur="Score(18); runningScore2(18)" ></td>
+        <td id="hs18"></td>
+        <td id="rs18"></td>
+    </tr>
+
+</table>
+<script src="scoreCard.js"></script>
+</body>
+</html>

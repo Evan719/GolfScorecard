@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Golf Scorecard</title>
+    <script src="golf.js"></script>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4258.887563867697!2d-111.93168940598213!3d40.729105655601046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f4b4dcdf299b%3A0xfba949bcda2f61be!2s1630+W+2100+S%2C+Salt+Lake+City%2C+UT+84119!5e1!3m2!1sen!2sus!4v1445531015715" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></head>
+<body onload="onload()">
+<script>
+
+    var accessToken, model, weather;
+    model = getCourse(12605);
+    function onload() {
+        var redirectURI = document.URL;
+        var clientID ="48093352-a077-4c61-b2d3-ca2aae13bc86";
+        var authUrl = "http://api.swingbyswing.com/v2/oauth/authorize?scope=read&redirect_uri=" + redirectURI + "&response_type=token&client_id=" + clientID;
+
+        accessToken = getUrlVars().access_token;
+        if(accessToken == null) {
+            location.replace(authUrl);
+        }
+        else {
+            accessToken = accessToken.replace("/n","");
+            loadDoc()
+        }
+    }
+
+    function getUrlVars(){
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+                function(m,key,value) {
+                    vars[key] = value;
+                });
+        return vars;
+    }
+
+    //JSON.parse()
+    </script>
+
+    <div id="demo"></div>
+<script>
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                json = JSON.parse(xhttp.responseText);
+            }
+        };
+        xhttp.open("GET", "https://api.swingbyswing.com/v2/courses/18300?includes=practice_area,nearby_courses,recent_media,recent_comments,recent_rounds,best_rounds,current_rounds,course_stats_month,course_stats_year&access_token=" + accessToken, true);
+        xhttp.send();
+    }
+</script>
+<div id="maincontainer">
+    <div id="scorecard">
+
+        <div id="topsection">
+
+            <div id="holenumber">
+                <div class="sectiontitle">Hole</div>
+
+                <div class="holebox">1<br>
+                Hole location: {lat: 40.7317897796287, lng: -111.934153139591}
+                    Tee Box: {lat: 40.7275067493491, lng: -111.935389637947}
+                </div>
+                <div class="holebox">2<br>
+                Hole Location: {lat: 40.7300336730047, lng: -111.936899721622}
+                    Tee Box:{lat: 40.7325922073421, lng: -111.934595704079}
+                </div>
+                <div class="holebox">3<br>
+                Hole Location:{lat: 40.7324458686584, lng: -111.936601996422}
+                Tee Box:{lat: 40.7303686376352, lng: -111.937031149864}
+                </div>
+                <div class="holebox">4<br>
+                Hole Location:{lat: 40.7326352959179, lng: -111.935365498066}
+                Tee Box:{lat: 40.7329011435061, lng: -111.936939954758}
+                </div>
+                <div class="holebox">5<br>
+                Hole Location:{lat: 40.7307979102871, lng: -111.931696236134}
+                Tee Box:{lat: 40.7329478903007, lng: -111.934839785099}
+                </div>
+                <div class="holebox">6<br>
+                Hole Location:{lat: 40.7278827857284, lng: -111.929115951061}
+                Tee Box:{lat: 40.7310820579496, lng: -111.931548714638}
+                </div>
+                <div class="holebox">7<br>
+                Hole Location:{lat: 40.7303426210482, lng: -111.932753026485}
+                Tee Box:{lat: 40.727681555714, lng: -111.930025219917}
+                </div>
+                <div class="holebox">8<br>
+                Hole Location:{lat: 40.7311231149791, lng: -111.933058798313}
+                Tee Box:{lat: 40.7302385544742, lng: -111.931524574757}
+                </div>
+                <div class="holebox">9<br>
+                Hole Location:{lat: 40.7273506428366, lng: -111.934775412083}
+                Tee Box:{lat: 40.7312141719832, lng: -111.933673024178}
+                </div>
+
+/
+                <div class="holebox">10<br>
+                    Hole Location:{lat: 40.7291149506111, lng: -111.932452619076}
+                    Tee Box:{lat: 40.7267140170477, lng: -111.934603750706}
+                </div><div class="holebox">11<br>
+                Hole Location:{lat: 40.7276392770322, lng: -111.932527720928}
+                Tee Box:{lat: 40.729120641826, lng: -111.931728422642}
+            </div><div class="holebox">12<br>
+                Hole Location:{lat: 40.7275904938758, lng: -111.928397119045}
+                Tee Box:{lat: 40.7273014529156, lng: -111.932299733162}
+            </div><div class="holebox">13<br>
+                Hole Location:{lat: 40.7319519732249, lng: -111.930660903454}
+                Tee Box:{lat: 40.7282059720538, lng: -111.927600502968}
+            </div><div class="holebox">14<br>
+                Hole Location:{lat: 40.729407642308, lng: -111.927630007267}
+                Tee Box:{lat: 40.7320149806653, lng: -111.930116415024}
+            </div><div class="holebox">15<br>
+                Hole Location:{lat: 40.7311450662137, lng: -111.92590534687}
+                Tee Box:{lat: 40.728405167875, lng: -111.927074790001}
+            </div><div class="holebox">16<br>
+                Hole Location:{lat: 40.7274563400113, lng: -111.926734149456}
+                Tee Box:{lat: 40.7311084807773, lng: -111.925106048584}
+            </div><div class="holebox">17<br>
+                Hole Location:{lat: 40.726513190057, lng: -111.92930907011}
+                Tee Box:{lat: 40.7267099517295, lng: -111.927434206009}
+            </div><div class="holebox">18<br>
+                Hole Location:{lat: 40.7263668380041, lng: -111.934271156788}
+                Tee Box:{lat: 40.7261773928995, lng: -111.929467320442}
+            </div>
+            </div>
+            <div id="parnumber">
+                <div class="sectiontitle">Par</div>
+                <div class="parbox">1</div>
+                <div class="parbox">2</div>
+                <div class="parbox">3</div>
+                <div class="parbox">4</div>
+                <div class="parbox">5</div>
+                <div class="parbox">6</div>
+                <div class="parbox">7</div>
+                <div class="parbox">8</div>
+                <div class="parbox">9</div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div id="playersection">
+
+        <div class="playerrow"></div>
+        <div class="playerrow"></div>
+        <div class="playerrow"></div>
+
+    </div>
+</div>
+
+</body>
+
+</html>
